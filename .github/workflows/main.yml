@@ -18,7 +18,7 @@ jobs:
      uses: bahmutov/npm-install@v1
      with:
        working-directory: web
-   - nome: Component & API & UI tests
+   - name: Component & API & UI tests
      uses: cypress-io/github-action@v2
      with:
        working-directory: web
