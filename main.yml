@@ -1,0 +1,35 @@
+name: Run Tests
+
+on:
+ push:
+  branches: [main]
+
+jobs:
+ cypress-run:
+  runs-on: ubuntu-16.04
+  steps:
+   - name: Checkout
+     uses: actions/checkout@v1
+   - name: instalar as dependencias do server
+     uses: bahmutov/npm-intall@v1
+     with:
+       working-directory: server
+   - name: instalar as dependencias da web
+     uses: bahmutov/npm-intall@v1
+     with:
+       working-directory: web 
+   - name: Component & API & UI Tests
+     uses: cypress-io/github-action@v2
+     with:
+       working-directory: web
+       install: false
+       start: npm run start:ci
+       wait-on: "http://localhost:3000"
+
+# baixar o codigo
+# instalar as dependencias server e web
+# subir as aplicações server e web
+# executar os testes
+# proffy-agilizei
+#  server
+#  web
